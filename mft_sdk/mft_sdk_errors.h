@@ -75,6 +75,7 @@ extern "C"
         MST_ERROR_UNKNOWN = 17,                        /**< Catch-all; the codes below it are newer. */
         MST_ERROR_FAILED_TO_SEND_ICMD = 18,            /**< An ICMD failed; mstGetSyndrome has the
                                                             firmware syndrome. */
+        MST_ERROR_TEMPERATURE_NOT_AVAILABLE = 19,      /**< No sensor produced a valid reading. */
     } MstStatus;
 
     /**

@@ -71,6 +71,7 @@ libmstflint_sdk_la_SOURCES = \
     mft_sdk_i2c_access.cpp \
     mft_sdk_icmd.cpp \
     mft_sdk_reg_access.cpp \
+    mft_sdk_temperature.cpp \
     mft_sdk_telemetry.cpp \
     mft_sdk.h \
     mft_sdk_class.hpp \
@@ -83,6 +84,7 @@ libmstflint_sdk_la_SOURCES = \
     mft_sdk_query.h \
     mft_sdk_reg_access.h \
     mft_sdk_telemetry.h \
+    mft_sdk_temperature.h \
     mft_sdk_telemetry_types.h \
     mft_sdk_types.h
 
@@ -95,6 +97,7 @@ libmstflint_sdk_la_LIBADD = \
     $(top_builddir)/mlxlink/modules/libmodules_lib.la \
     $(MSTREG_SDK_WHOLE_ARCHIVE) \
     $(top_builddir)/mft_utils/libmftutils.la \
+    $(top_builddir)/small_utils/libmgettemp.la \
     $(MTCR_SDK_WHOLE_ARCHIVE) \
     $(top_builddir)/adb_parser/libadb_parser.la \
     $(top_builddir)/cmdif/libcmdif.la \
@@ -131,6 +134,7 @@ sdkinclude_HEADERS = \
     mft_sdk_query.h \
     mft_sdk_reg_access.h \
     mft_sdk_telemetry.h \
+    mft_sdk_temperature.h \
     mft_sdk_telemetry_types.h \
     mft_sdk_types.h
 

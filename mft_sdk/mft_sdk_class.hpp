@@ -122,6 +122,9 @@ public:
     // ICMD SDK functions
     MstStatus sendIcmd(uint32_t opcode, void* data, uint32_t dataSize, MstIcmdAccessMethod method);
 
+    // temperature SDK functions
+    MstStatus getDeviceTemperature(int32_t* temperature);
+
 private:
     void setInitError(MstStatus status, const std::string& errorMessage);
     void setLastError(MstStatus status, const std::string& errorMessage);
