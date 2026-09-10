@@ -45,26 +45,32 @@ extern "C"
 
 #define MAX_ERROR_MESSAGE_LENGTH 256
 
+    /*
+     * Values are pinned: this header ships to third parties, so a caller built
+     * against an older SDK keeps working against a newer shared object. Give a
+     * new code the next free number - never insert one in the middle.
+     */
     typedef enum MstStatus
     {
-        MST_SUCCESS,
-        MST_ERROR_UNINITIALIZED,
-        MST_ERROR_INVALID_ARGUMENT,
-        MST_ERROR_NOT_SUPPORTED,
-        MST_ERROR_NO_PERMISSION,
-        MST_ERROR_NO_AVAILABLE_DEVICES,
-        MST_ERROR_DEVICE_NOT_FOUND,
-        MST_ERROR_INTERFACE_NOT_AVAILABLE,
-        MST_ERROR_MST_DRIVER_NOT_LOADED,
-        MST_ERROR_FAILED_TO_ALLOCATE_MEMORY,
-        MST_ERROR_FAILED_TO_OPEN_DEVICE,
-        MST_ERROR_FAILED_TO_SEND_ACCESS_REG,
-        MST_ERROR_FAILED_TO_GET_TELEMETRY,
-        MST_ERROR_FAILED_TO_GET_HCA_CAPABILITIES,
-        MST_ERROR_FAILED_TO_READ_CR_SPACE,
-        MST_ERROR_FAILED_TO_WRITE_CR_SPACE,
-        MST_ERROR_FAILED_TO_SET_I2C_SECONDARY,
-        MST_ERROR_UNKNOWN,
+        MST_SUCCESS = 0,
+        MST_ERROR_UNINITIALIZED = 1,
+        MST_ERROR_INVALID_ARGUMENT = 2,
+        MST_ERROR_NOT_SUPPORTED = 3,
+        MST_ERROR_NO_PERMISSION = 4,
+        MST_ERROR_NO_AVAILABLE_DEVICES = 5,
+        MST_ERROR_DEVICE_NOT_FOUND = 6,
+        MST_ERROR_INTERFACE_NOT_AVAILABLE = 7,
+        MST_ERROR_MST_DRIVER_NOT_LOADED = 8,
+        MST_ERROR_FAILED_TO_ALLOCATE_MEMORY = 9,
+        MST_ERROR_FAILED_TO_OPEN_DEVICE = 10,
+        MST_ERROR_FAILED_TO_SEND_ACCESS_REG = 11,
+        MST_ERROR_FAILED_TO_GET_TELEMETRY = 12,
+        MST_ERROR_FAILED_TO_GET_HCA_CAPABILITIES = 13,
+        MST_ERROR_FAILED_TO_READ_CR_SPACE = 14,
+        MST_ERROR_FAILED_TO_WRITE_CR_SPACE = 15,
+        MST_ERROR_FAILED_TO_SET_I2C_SECONDARY = 16,
+        MST_ERROR_UNKNOWN = 17,
+        MST_ERROR_FAILED_TO_SEND_ICMD = 18,
     } MstStatus;
 
     typedef struct MstErrorInfo_t

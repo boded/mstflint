@@ -69,6 +69,7 @@ libmstflint_sdk_la_SOURCES = \
     mft_sdk_errors.cpp \
     mft_sdk_hca_caps.cpp \
     mft_sdk_i2c_access.cpp \
+    mft_sdk_icmd.cpp \
     mft_sdk_reg_access.cpp \
     mft_sdk_telemetry.cpp \
     mft_sdk.h \
@@ -78,6 +79,7 @@ libmstflint_sdk_la_SOURCES = \
     mft_sdk_errors.h \
     mft_sdk_hca_caps.h \
     mft_sdk_i2c_access.h \
+    mft_sdk_icmd.h \
     mft_sdk_query.h \
     mft_sdk_reg_access.h \
     mft_sdk_telemetry.h \
@@ -125,6 +127,7 @@ sdkinclude_HEADERS = \
     mft_sdk_errors.h \
     mft_sdk_hca_caps.h \
     mft_sdk_i2c_access.h \
+    mft_sdk_icmd.h \
     mft_sdk_query.h \
     mft_sdk_reg_access.h \
     mft_sdk_telemetry.h \
