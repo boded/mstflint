@@ -43,40 +43,47 @@ extern "C"
 {
 #endif
 
+/** Size of the error message buffer in MstErrorInfo, including the terminator. */
 #define MAX_ERROR_MESSAGE_LENGTH 256
 
-    /*
-     * Values are pinned: this header ships to third parties, so a caller built
-     * against an older SDK keeps working against a newer shared object. Give a
-     * new code the next free number - never insert one in the middle.
+    /**
+     * @brief The status returned by every MFT SDK function.
+     *
+     * The numeric values are part of the API: an existing code keeps its value across SDK versions and
+     * a new code takes the next free number, so a caller built against an older SDK keeps working
+     * against a newer shared object.
      */
     typedef enum MstStatus
     {
-        MST_SUCCESS = 0,
-        MST_ERROR_UNINITIALIZED = 1,
-        MST_ERROR_INVALID_ARGUMENT = 2,
-        MST_ERROR_NOT_SUPPORTED = 3,
-        MST_ERROR_NO_PERMISSION = 4,
-        MST_ERROR_NO_AVAILABLE_DEVICES = 5,
-        MST_ERROR_DEVICE_NOT_FOUND = 6,
-        MST_ERROR_INTERFACE_NOT_AVAILABLE = 7,
-        MST_ERROR_MST_DRIVER_NOT_LOADED = 8,
-        MST_ERROR_FAILED_TO_ALLOCATE_MEMORY = 9,
-        MST_ERROR_FAILED_TO_OPEN_DEVICE = 10,
-        MST_ERROR_FAILED_TO_SEND_ACCESS_REG = 11,
-        MST_ERROR_FAILED_TO_GET_TELEMETRY = 12,
-        MST_ERROR_FAILED_TO_GET_HCA_CAPABILITIES = 13,
-        MST_ERROR_FAILED_TO_READ_CR_SPACE = 14,
-        MST_ERROR_FAILED_TO_WRITE_CR_SPACE = 15,
-        MST_ERROR_FAILED_TO_SET_I2C_SECONDARY = 16,
-        MST_ERROR_UNKNOWN = 17,
-        MST_ERROR_FAILED_TO_SEND_ICMD = 18,
+        MST_SUCCESS = 0,                               /**< The operation completed successfully. */
+        MST_ERROR_UNINITIALIZED = 1,                   /**< The device handle has no open device. */
+        MST_ERROR_INVALID_ARGUMENT = 2,                /**< An argument was NULL, zero or out of range. */
+        MST_ERROR_NOT_SUPPORTED = 3,                   /**< The device cannot do this. */
+        MST_ERROR_NO_PERMISSION = 4,                   /**< The caller lacks the required privileges. */
+        MST_ERROR_NO_AVAILABLE_DEVICES = 5,            /**< Discovery found no matching device. */
+        MST_ERROR_DEVICE_NOT_FOUND = 6,                /**< The requested device does not exist. */
+        MST_ERROR_INTERFACE_NOT_AVAILABLE = 7,         /**< The access interface is absent on this host. */
+        MST_ERROR_MST_DRIVER_NOT_LOADED = 8,           /**< The mst_pci/mst_pciconf module is not loaded. */
+        MST_ERROR_FAILED_TO_ALLOCATE_MEMORY = 9,       /**< The SDK could not allocate a buffer. */
+        MST_ERROR_FAILED_TO_OPEN_DEVICE = 10,          /**< Opening the device failed. */
+        MST_ERROR_FAILED_TO_SEND_ACCESS_REG = 11,      /**< An access register command failed. */
+        MST_ERROR_FAILED_TO_GET_TELEMETRY = 12,        /**< A telemetry query failed. */
+        MST_ERROR_FAILED_TO_GET_HCA_CAPABILITIES = 13, /**< An HCA capability query failed. */
+        MST_ERROR_FAILED_TO_READ_CR_SPACE = 14,        /**< A CR space read failed. */
+        MST_ERROR_FAILED_TO_WRITE_CR_SPACE = 15,       /**< A CR space write failed. */
+        MST_ERROR_FAILED_TO_SET_I2C_SECONDARY = 16,    /**< Setting the I2C secondary address failed. */
+        MST_ERROR_UNKNOWN = 17,                        /**< Catch-all; the codes below it are newer. */
+        MST_ERROR_FAILED_TO_SEND_ICMD = 18,            /**< An ICMD failed; mstGetSyndrome has the
+                                                            firmware syndrome. */
     } MstStatus;
 
+    /**
+     * @brief A failure status paired with the message describing it.
+     */
     typedef struct MstErrorInfo_t
     {
-        MstStatus status;
-        char errorMessage[MAX_ERROR_MESSAGE_LENGTH];
+        MstStatus status;                            /**< The status of the failed operation. */
+        char errorMessage[MAX_ERROR_MESSAGE_LENGTH]; /**< Human readable description of the failure. */
     } MstErrorInfo;
 
     /**
